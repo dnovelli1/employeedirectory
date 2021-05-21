@@ -1,6 +1,8 @@
-import React, {useState, useEffect, useReducer}  from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import './App.css';
 import API from './utils/API';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // const initialState = {count: 0};
 
@@ -38,7 +40,7 @@ function App() {
 
   const [employees, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      case 'init': 
+      case 'init':
         return action.payload;
       case 'ageAsc':
         return [...state].sort((a, b) => a.dob.age - b.dob.age);
@@ -48,25 +50,38 @@ function App() {
         return state;
     }
   }, []);
-  
+
   useEffect(() => {
     API.getEmployees().then(emp => {
       console.log(emp);
       // setEmployees(emp.data.results);
-      dispatch({type: 'init', payload: emp.data.results});
+      dispatch({ type: 'init', payload: emp.data.results });
     })
   }, []);
 
   return (
     <div>
       <input type='text' value={filter} onChange={e => setFilter(e.target.value)}></input>
-      {employees?.filter(emp => (emp.name.first + ' ' + emp.name.last).toLowerCase().includes(filter.toLowerCase())).map(employee => (
-        <div>
-          <h1>{employee.name.first} {employee.name.last}</h1>
-            <p>{employee.dob.age}</p>
-            <p>{employee.email}</p>
-        </div>  
-        ))}
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees?.filter(emp => (emp.name.first + ' ' + emp.name.last).toLowerCase().includes(filter.toLowerCase())).map(employee => (
+            <tr>
+              <th scope="row"><img src={employee.picture.medium} alt={employee.name.first} style={{borderRadius: 5}}></img></th>
+              <td>{employee.name.first} {employee.name.last}</td>
+              <td>{employee.dob.age}</td>
+              <td>{employee.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
