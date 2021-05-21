@@ -9,6 +9,12 @@
   animation: AnimationName 6s ease infinite;
 }
 
+.border-handle {
+  border: linear-gradient(270deg, #1ab0d8, #189bbe, #238da9);
+
+  animation: AnimationName 6s ease infinite;
+}
+
 @keyframes AnimationName {
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
