@@ -4,36 +4,6 @@ import API from './utils/API';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-// const initialState = {count: 0};
-
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case 'increment':
-//       return {count: state.count + 1};
-//     case 'decrement':
-//       return {count: state.count - 1};
-//     default:
-//       throw new Error();
-//   }
-// }
-
-// function Counter() {
-//   const [state, dispatch] = useReducer(reducer, initialState);
-//   return (
-//     <>
-//       Count: {state.count}
-//       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-//       <button onClick={() => dispatch({type: 'increment'})}>+</button>
-//     </>
-//   );
-// }
-
-
-
-
-
-
-
 
 function App() {
   const [filter, setFilter] = useState('');
@@ -60,28 +30,41 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <input type='text' value={filter} onChange={e => setFilter(e.target.value)}></input>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Age</th>
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees?.filter(emp => (emp.name.first + ' ' + emp.name.last).toLowerCase().includes(filter.toLowerCase())).map(employee => (
+    <div style={{ textAlign: 'center' }}>
+      <nav className="navbar gradient">
+        <div className="container-fluid">
+          <span className="navbar-brand mb-0 h1">Welcome to your Employee Directory</span>
+        </div>
+        <div className="container">
+          <img src="./hero.jpg" className="img-fluid" alt="hero"></img>
+        </div>
+      </nav>
+      <div className="container-fluid gradient">
+        <label style={{ fontWeight: 'bolder' }}>Search Employee by Name:</label>
+        <input style={{ width: '60%', margin: 10 }} type='text' value={filter} onChange={e => setFilter(e.target.value)}></input>
+      </div>
+        <table className="table">
+          <thead>
             <tr>
-              <th scope="row"><img src={employee.picture.medium} alt={employee.name.first} style={{borderRadius: 5}}></img></th>
-              <td>{employee.name.first} {employee.name.last}</td>
-              <td>{employee.dob.age}</td>
-              <td>{employee.email}</td>
+              <th scope="col">Photo</th>
+              <th scope="col">Name</th>
+              <th scope="col" onClick={() => dispatch({ type: 'ageAsc' })}>Age</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {employees?.filter(emp => (emp.name.first + ' ' + emp.name.last).toLowerCase().includes(filter.toLowerCase())).map(employee => (
+              <tr style={{ borderColor: 'lightBlue', borderWidth: 10, margin: 5 }}>
+                <th scope="row"><img src={employee.picture.medium} alt={employee.name.first} style={{ borderRadius: 5 }}></img></th>
+                <td>{employee.name.first} {employee.name.last}</td>
+                <td>{employee.dob.age}</td>
+                <td>{employee.email}</td>
+                <td>{employee.cell}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
     </div>
   );
 }
