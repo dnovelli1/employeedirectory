@@ -10,7 +10,7 @@ In this assignment I was given the task of creating an Employee Directory with R
 
 Please have a look at the full application deployed at the link below:
 
-[Full-Site]()
+[Full-Site](https://dnovelli1.github.io/employeedirectory/)
 
 
 
