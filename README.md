@@ -62,15 +62,15 @@ To run tests, please use the following command:
 
 Here is an example of the application in action!
 
-![demo]()
+![demo](./images/websitepreview.gif)
 
 
 How was it made? Take a look here!
 
+This is an example of the useReducer method. In this case I am using the employees array and the dispatch as my setter for the array. Reducer takes in the current state and the action to be performed, which explains the switch case. I am changing the state based on the type of action being passed in through the dispatch method. 
 
 
-
-![Code-Snippet]()
+![Code-Snippet](./images/codesnippet.PNG)
 
 
 ## Questions
