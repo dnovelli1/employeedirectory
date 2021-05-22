@@ -6,8 +6,7 @@
 
 ## Description
 
- 
-
+In this assignment I was given the task of creating an Employee Directory with React. In order to complete this assignment I needed to create and manage the state of the application using 'useReducer'. I needed to filter search results live, by updating the virtual dom with the current values inside of the input field. Lastly I needed to set sorting methods on the employee's age so a user could see age descending and ascending.
 
 Please have a look at the full application deployed at the link below:
 
@@ -33,7 +32,7 @@ Please have a look at the full application deployed at the link below:
 
 ## Technology-Used
 
-- GitHub - repository storage for the project in order to amke changes, deploy them and push to a main branch. 
+- GitHub - repository storage for the project in order to make changes, deploy them and push to a main branch. 
 
 - GitBash - used for written commands and communicating with the repository stored on GitHub.
 

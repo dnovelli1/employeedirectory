@@ -7,14 +7,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [filter, setFilter] = useState('');
+  const [ageToggle, setAgeToggle] = useState('');
 
   const [employees, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case 'init':
         return action.payload;
       case 'ageAsc':
+        setAgeToggle(!ageToggle)
         return [...state].sort((a, b) => a.dob.age - b.dob.age);
       case 'ageDesc':
+        setAgeToggle(!ageToggle)
         return [...state].sort((a, b) => b.dob.age - a.dob.age);
       default:
         return state;
@@ -51,7 +54,7 @@ function App() {
           <tr>
             <th scope="col">Photo</th>
             <th scope="col">Name</th>
-            <th scope="col" onClick={() => dispatch({ type: 'ageAsc' })}>Age</th>
+            <th scope="col" onClick={() => dispatch({ type: ageToggle? 'ageAsc' : 'ageDesc' })}>Age</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
           </tr>
